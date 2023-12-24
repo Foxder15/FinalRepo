@@ -20,5 +20,5 @@ public class User {
 	private String role;
 	private String status = "newActive";
 	private String picture;
-	private String agent;
+	private Agent agent;
 }

@@ -13,26 +13,6 @@ public class HomeController {
         return "index/index";
     }
 
-    @GetMapping("/admin")
-    public String admin(){
-        return "admin/admin";
-    }
-
-    @GetMapping("/user")
-    public String user(){
-        return "admin/user";
-    }
-
-    @GetMapping("/product")
-    public String product(){
-        return "admin/product";
-    }
-
-    @GetMapping("/agent")
-    public String agent(){
-        return "admin/agent";
-    }
-
     @GetMapping("/error")
     public String errorHandler(HttpServletRequest req, Model model){
         int code = (int) req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);

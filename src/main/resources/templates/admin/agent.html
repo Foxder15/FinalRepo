@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,23 +16,25 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <ul>
-        <li><a href="/agent">Agents</a></li>
-        <li><a href="/user">Users</a></li>
-        <li><a href="/product">Products</a></li>
-        <li><a href="/invoice">Invoices</a></li>
-        <li><a href="/customer">Customers</a></li>
+        <li><a href="/admin/agent">Agents</a></li>
+        <li><a href="/admin/user">Users</a></li>
+        <li><a href="/admin/product">Products</a></li>
+        <li><a href="/admin/invoice">Invoices</a></li>
+        <li><a href="/admin/customer">Customers</a></li>
         <li><a href="/admin">Profile</a></li>
         <li><a href="/">Log out</a></li>
     </ul>
 </div>
 
 <div class="search-container">
-    <input type="text" class="search-bar" placeholder="Search...">
-    <button class="search-button">Search</button>
+    <form >
+        <input type="text" name="keyword" class="search-bar" placeholder="Search..." th:value="${keyword}">
+        <button type="submit" class="search-button">Search</button>
+    </form>
 </div>
 
 <div class="add-button-container">
-    <a href="#" class="add-button">Create a New Agent</a>
+    <a href="/admin/agent/addAgent" class="add-button">Create a New Agent</a>
 </div>
 
 <div class="user-table">
@@ -42,18 +44,20 @@
             <th>ID</th>
             <th>Agent</th>
             <th>Address</th>
+            <th style="text-align: center">Status</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>Chi Nhanh Quan 7</td>
-            <td>Le Van Luong Quan 7</td>
+        <tr th:each="a: ${agents}">
+            <td th:text="${a.agentId}"></td>
+            <td th:text="${a.agentName}"></td>
+            <td th:text="${a.agentAddress}"></td>
+            <td th:text="${a.status}" style="background: #00FA9A; text-align: center"></td>
             <td class="action-buttons">
-                <a href="#" class="view-button">View</a>
-                <a href="#" class="edit-button">Edit</a>
-                <a href="#" class="delete-button">Delete</a>
+                <a th:href="${a.agentId}" th:name="${a.agentId}" type="submit" class="view-button">View</a>
+                <a href="" th:name="${a.agentId}" class="edit-button">Edit</a>
+                <a href="" th:name="${a.agentId}" class="delete-button">Delete</a>
             </td>
         </tr>
 
