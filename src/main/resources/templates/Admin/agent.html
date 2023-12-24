@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/admin/style.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <h1>Admin Dashboard</h1>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <ul>
+        <li><a href="/agent">Agents</a></li>
+        <li><a href="/user">Users</a></li>
+        <li><a href="/product">Products</a></li>
+        <li><a href="/invoice">Invoices</a></li>
+        <li><a href="/customer">Customers</a></li>
+        <li><a href="/admin">Profile</a></li>
+        <li><a href="/">Log out</a></li>
+    </ul>
+</div>
+
+<div class="search-container">
+    <input type="text" class="search-bar" placeholder="Search...">
+    <button class="search-button">Search</button>
+</div>
+
+<div class="add-button-container">
+    <a href="#" class="add-button">Create a New Agent</a>
+</div>
+
+<div class="user-table">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Agent</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Chi Nhanh Quan 7</td>
+            <td>Le Van Luong Quan 7</td>
+            <td class="action-buttons">
+                <a href="#" class="view-button">View</a>
+                <a href="#" class="edit-button">Edit</a>
+                <a href="#" class="delete-button">Delete</a>
+            </td>
+        </tr>
+
+        <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

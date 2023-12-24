@@ -10,7 +10,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     @GetMapping("/")
     public String index(){
-        return "login/index";
+        return "index/index";
+    }
+
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin/admin";
+    }
+
+    @GetMapping("/user")
+    public String user(){
+        return "admin/user";
+    }
+
+    @GetMapping("/product")
+    public String product(){
+        return "admin/product";
+    }
+
+    @GetMapping("/agent")
+    public String agent(){
+        return "admin/agent";
     }
 
     @GetMapping("/error")
@@ -20,7 +40,7 @@ public class HomeController {
 
         model.addAttribute("code", code);
         model.addAttribute("URL", url);
-        return "login/error";
+        return "index/error";
     }
 
 
