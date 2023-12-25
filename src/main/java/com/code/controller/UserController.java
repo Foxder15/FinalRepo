@@ -5,17 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/admin/user")
+public class UserController {
+
 	@GetMapping("")
-	public String admin(){
-		return "admin/admin";
+	public String user(){
+		return "admin/user";
 	}
-
-
-	@GetMapping("/product")
-	public String product(){
-		return "admin/product";
-	}
-
 }
