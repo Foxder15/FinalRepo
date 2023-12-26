@@ -128,11 +128,11 @@
 <body>
 
 <main>
-	<h1>Point of Sale</h1>
+	<h1>DFruit Store</h1>
 
 	<div class="product-list">
 		<div class="product-card" th:each="p: ${list}">
-			<img class="product-image" src="/image/Apple.jpg" alt="Product 1">
+			<img class="product-image" th:src="${direct}+${p.productCode}+${file}" alt="Product 1">
 			<div class="product-details">
 				<p class="product-name" th:text="${p.productName}"></p>
 				<p class="product-barcode">Barcode: <span th:text="${p.productCode}"></span></p>
@@ -151,7 +151,7 @@
 		</ul>
 		<p class="cart-total" id="cartTotal">Total Amount: 0.00 VND</p>
 		<div class="button-container">
-			<button class="add-button" onclick="checkout()">Checkout</button>
+			<button class="add-button" onclick="checkout()">Payment</button>
 			<button class="add-button" onclick="clearCart()">Clear Cart</button>
 		</div>
 	</div>

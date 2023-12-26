@@ -39,24 +39,17 @@
 		<thead>
 		<tr>
 			<th>ID</th>
-			<th>Name</th>
-			<th>Bar Code</th>
-			<th>Import Quality</th>
-			<th>Import Price</th>
-			<th>Retail Price</th>
-			<th>Status</th>
+			<th>Date</th>
+			<th>Total</th>
 			<th></th>
 		</tr>
 		</thead>
 		<tbody>
-		<tr th:each="p: ${products}">
-			<td th:text="${p.productId}"></td>
-			<td th:text="${p.productName}"></td>
-			<td th:text="${p.productCode}"></td>
-			<td th:text="${p.importQuality}"></td>
-			<td th:text="${p.importPrice}"></td>
-			<td th:text="${p.retailPrice}"></td>
-			<td th:text="${p.status}"></td>
+		<tr th:each="i: ${invoice}">
+			<td th:text="${i.invoiceID}"></td>
+			<td th:text="${i.date}"></td>
+			<td th:text="${i.total}"></td>
+
 			<td class="action-buttons">
 				<a href="#" class="view-button">View</a>
 				<a href="#" class="edit-button">Edit</a>

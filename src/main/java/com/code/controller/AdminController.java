@@ -39,6 +39,8 @@ public class AdminController {
 
 			model.addAttribute("name", user.getUsername());
 			model.addAttribute("role", user.getRole());
+			model.addAttribute("direct","/image/");
+			model.addAttribute("file",".png");
 			model.addAttribute("list", list);
 			return "admin/employee";
 		}
