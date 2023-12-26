@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +27,14 @@
 </div>
 
 <div class="search-container">
-  <input type="text" class="search-bar" placeholder="Search...">
-  <button class="search-button">Search</button>
+  <form >
+    <input type="text" name="keyword" class="search-bar" placeholder="Search..." th:value="${keyword}">
+    <button type="submit" class="search-button">Search</button>
+  </form>
 </div>
 
 <div class="add-button-container">
-  <a href="#" class="add-button">Add a New Employee</a>
+  <a href="/admin/user/addUser" class="add-button">Add a New Employee</a>
 </div>
 
 <div class="user-table">
@@ -46,24 +48,21 @@
       <th>Phone</th>
       <th>Role</th>
       <th>Status</th>
-      <th>Agent</th>
-      <th>Actions</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>1</td>
-      <td>John Doe</td>
-      <td>john.doe@example.com</td>
-      <td>Male</td>
-      <td>093876122</td>
-      <td class="role-label">Admin</td>
-      <td>NewActive</td>
-      <td>Quan7</td>
+    <tr th:each="u: ${users}">
+      <td th:text="${u.userId}"></td>
+      <td th:text="${u.username}"></td>
+      <td th:text="${u.gmail}"></td>
+      <td th:text="${u.gender}"></td>
+      <td th:text="${u.phone}"></td>
+      <td th:text="${u.role}" class="role-label"></td>
+      <td th:text="${u.status}"></td>
       <td class="action-buttons">
         <a href="#" class="view-button">View</a>
         <a href="#" class="edit-button">Edit</a>
-        <a href="#" class="delete-button">Delete</a>
       </td>
     </tr>
 

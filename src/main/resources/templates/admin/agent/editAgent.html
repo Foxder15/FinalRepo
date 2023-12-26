@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Add User</title>
+	<title>Edit Agent Profile</title>
 	<style>
         body {
             font-family: 'Arial', sans-serif;
@@ -16,11 +16,11 @@
             height: 100vh;
         }
 
-        .add-user-form {
+        .edit-form-container {
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            padding: 50px;
+            max-width: 400px;
+            padding: 20px;
             border-radius: 8px;
         }
 
@@ -36,7 +36,7 @@
 
         input, select {
             width: 100%;
-            padding: 20px;
+            padding: 8px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -48,17 +48,18 @@
             margin-top: 20px;
         }
 
-        button {
+        a, button {
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
+
         a {
-            text-decoration: none;
+	        text-decoration: none;
         }
 
-        .add-button {
+        .update-button {
             background-color: #009000;
             color: #fff;
         }
@@ -71,45 +72,37 @@
 </head>
 <body>
 
-	<form method="post" action="/admin/user/addUser">
-		<div class="add-user-form">
-			<h2>Add User</h2>
+<form method="post" th:action="${link}+${agent.agentId}">
+	<div class="edit-form-container">
+		<h2>Edit Agent Profile</h2>
 
-			<div class="form-group">
-				<label for="username">Username:</label>
-				<input type="text" id="username" name="username" placeholder="Enter username">
-			</div>
-
-			<div class="form-group">
-				<label for="email">Email (Gmail):</label>
-				<input type="email" id="email" name="gmail" placeholder="Enter email">
-			</div>
-
-			<div class="form-group">
-				<label for="gender">Gender:</label>
-				<select id="gender" name="gender">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label for="phone">Phone:</label>
-				<input type="tel" id="phone" name="phone" placeholder="Enter phone number">
-			</div>
-
-			<div class="form-group">
-				<label for="dob">Date of Birth:</label>
-				<input type="date" id="dob" name="dob" placeholder="yyyy-MM-dd" min="1997-01-01" max="2030-12-31">
-			</div>
-
-			<div class="button-container">
-				<button type="submit" class="add-button">Add</button>
-				<button class="cancel-button"><a href="/admin/user">Cancel</a></button>
-			</div>
+		<div class="form-group">
+			<label for="agentName">Name:</label>
+			<input type="text" id="agentName" name="agentName" placeholder="Enter agent name" th:value="${agent.agentName}">
 		</div>
 
-	</form>
+		<div class="form-group">
+			<label for="agentAddress">Address:</label>
+			<input type="text" id="agentAddress" name="agentAddress" placeholder="Enter agent address" th:value="${agent.agentAddress}">
+		</div>
+
+		<div class="form-group">
+			<label for="status">Status:</label>
+			<select  id="status" name="status">
+				<option th:value="${agent.status}" th:text="${agent.status}"></option>
+				<option th:if="${agent.status == 'InActive'}" value="Active">Active</option>
+				<option th:unless="${agent.status == 'InActive'}" value="InActive">InActive</option>
+			</select>
+		</div>
+
+		<div class="button-container">
+			<button type="submit" class="update-button">Update</button>
+			<a href="/admin/agent" class="cancel-button" >Cancel</a>
+		</div>
+	</div>
+</form>
+
+
 
 </body>
 </html>

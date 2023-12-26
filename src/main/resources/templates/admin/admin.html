@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,13 +30,13 @@
 <div class="profile-container">
     <div class="profile-header">
         <div class="profile-picture">
-            <img src="" alt="">
+            <img src="/image/picture.png" alt="">
         </div>
     </div>
     <div class="profile-details">
-        <h2>John Doe</h2>
-        <p>Email: john.doe@example.com</p>
-        <p>Date of Birth: January 1, 1990</p>
+        <h2>Admin</h2>
+        <p>Email: <span th:text="${email}"></span></p>
+        <p>Date of Birth: January 4, 2002</p>
         <!-- Add more profile details as needed -->
     </div>
     <div class="profile-actions">

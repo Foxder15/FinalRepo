@@ -32,6 +32,8 @@ public class AgentController {
 			list = agentService.getAgent();
 		}
 		System.out.println(keyword);
+		model.addAttribute("linkEdit","/admin/agent/edit/");
+		model.addAttribute("link","/admin/agent/");
 		model.addAttribute("agents", list);
 		model.addAttribute("keyword",keyword);
 		return "admin/agent";
@@ -48,7 +50,15 @@ public class AgentController {
 		return "redirect:/admin/agent";
 	}
 
-	@PutMapping("/{id}")
+	@GetMapping("/edit/{id}")
+	public String updateAgent(@PathVariable int id, Model model){
+		Agent agent = agentService.findAgentById(id);
+		model.addAttribute("agent", agent);
+		model.addAttribute("link", "/admin/agent/edit/");
+		return "/admin/agent/editAgent";
+	}
+
+	@PostMapping("/edit/{id}")
 	public String updateAgent(@PathVariable int id, Agent agentRequest){
 		agentService.updateAgent(id, agentRequest);
 		return "redirect:/admin/agent";
@@ -57,6 +67,8 @@ public class AgentController {
 	@GetMapping("/{id}")
 	public String viewAgent(@PathVariable int id, Model model){
 		Agent agent = agentService.findAgentById(id);
+		System.out.println(agent);
+		model.addAttribute("link","/admin/agent/edit/");
 		model.addAttribute("agent", agent);
 		return "/admin/agent/viewAgent";
 	}

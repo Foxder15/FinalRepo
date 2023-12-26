@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +27,14 @@
 </div>
 
 <div class="search-container">
-    <input type="text" class="search-bar" placeholder="Search...">
-    <button class="search-button">Search</button>
+    <form >
+        <input type="text" name="keyword" class="search-bar" placeholder="Search..." th:value="${keyword}">
+        <button type="submit" class="search-button">Search</button>
+    </form>
 </div>
 
 <div class="add-button-container">
-    <a href="#" class="add-button">Add Product</a>
+    <a href="/admin/product/addProduct" class="add-button">Add Product</a>
 </div>
 
 <div class="product-table">
@@ -46,22 +48,21 @@
             <th>Import Price</th>
             <th>Retail Price</th>
             <th>Status</th>
-            <th>Actions</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>Product A</td>
-            <td>P001</td>
-            <td>100</td>
-            <td>$10.00</td>
-            <td>$20.00</td>
-            <td>InStock</td>
+        <tr th:each="p: ${products}">
+            <td th:text="${p.productId}"></td>
+            <td th:text="${p.productName}"></td>
+            <td th:text="${p.productCode}"></td>
+            <td th:text="${p.importQuality}"></td>
+            <td th:text="${p.importPrice}"></td>
+            <td th:text="${p.retailPrice}"></td>
+            <td th:text="${p.status}"></td>
             <td class="action-buttons">
                 <a href="#" class="view-button">View</a>
                 <a href="#" class="edit-button">Edit</a>
-                <a href="#" class="delete-button">Delete</a>
             </td>
         </tr>
         <tr>

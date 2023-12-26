@@ -53,11 +53,11 @@
             <td th:text="${a.agentId}"></td>
             <td th:text="${a.agentName}"></td>
             <td th:text="${a.agentAddress}"></td>
-            <td th:text="${a.status}" style="background: #00FA9A; text-align: center"></td>
+            <td th:if="${a.status == 'Active'}" th:text="${a.status}" style="background: #00FA9A; text-align: center"></td>
+            <td th:unless="${a.status == 'Active'}" th:text="${a.status}" style="background: #f44336; text-align: center"></td>
             <td class="action-buttons">
-                <a th:href="${a.agentId}" th:name="${a.agentId}" type="submit" class="view-button">View</a>
-                <a href="" th:name="${a.agentId}" class="edit-button">Edit</a>
-                <a href="" th:name="${a.agentId}" class="delete-button">Delete</a>
+                <a th:href="${link}+${a.agentId}" th:name="${a.agentId}" type="submit" class="view-button">View</a>
+                <a th:href="${linkEdit}+${a.agentId}" th:name="${a.agentId}" class="edit-button">Edit</a>
             </td>
         </tr>
 

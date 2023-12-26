@@ -1,7 +1,12 @@
 package com.code.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -9,17 +14,19 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
+@Entity
 public class Product {
-	private String productId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int productId;
 	private String productName;
 	private String productCode;
-	private String image;
 	private float importQuality;
 	private float soldQuality = 0;
 	private float inStockQuality;
 	private float importPrice;
 	private float retailPrice;
-	private String status;
-	private Date creationDate;
-	private Date expiry;
+	private String status = "InStock";
+	private LocalDate creationDate = LocalDate.now();
+	private LocalDate expiry;
 }
